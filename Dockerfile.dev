@@ -1,0 +1,16 @@
+# backend/Dockerfile.dev
+FROM node:24-alpine
+
+WORKDIR /pong/back
+
+RUN npm install -g nodemon
+
+COPY package.json package-lock.json* ./
+
+RUN npm install
+
+COPY . .
+
+EXPOSE 4000
+
+CMD ["nodemon", "--legacy-watch", "index.js"]

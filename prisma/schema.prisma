@@ -1,0 +1,47 @@
+// Schéma Prisma pour Rencontre Pongistes
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  nom       String
+  prenom    String
+  niveau    String
+  email     String   @unique
+  password  String
+  adresse   String
+  annonces  Ad[]
+  inscriptions Inscription[]
+  createdAt DateTime @default(now())
+}
+
+model Ad {
+  id         Int      @id @default(autoincrement())
+  titre      String
+  adresse    String
+  latitude   Float?
+  longitude  Float?
+  places     Int
+  date       DateTime
+  userId     Int
+  user       User     @relation(fields: [userId], references: [id])
+  createdAt  DateTime @default(now())
+  inscriptions Inscription[]
+}
+
+model Inscription {
+  id        Int      @id @default(autoincrement())
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int
+  ad        Ad       @relation(fields: [adId], references: [id])
+  adId      Int
+  createdAt DateTime @default(now())
+  @@unique([userId, adId]) // Un utilisateur ne peut s'inscrire qu'une fois à une annonce
+}
