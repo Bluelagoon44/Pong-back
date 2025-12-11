@@ -8,6 +8,8 @@ RUN npm install
 
 COPY . .
 
+RUN npx prisma migrate deploy
+
 EXPOSE 4000
 
 CMD [ "node", "app.js" ]
