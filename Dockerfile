@@ -10,4 +10,4 @@ COPY . .
 
 EXPOSE 4000
 
-CMD [ "npx", "prisma", "generate", "&&", "node", "app.js" ]
+CMD npx prisma generate && npm start
