@@ -4,7 +4,8 @@
   "description": "## Stack - Express - Prisma - bcrypt - dotenv",
   "main": "app.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
