@@ -2,9 +2,9 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "## Stack - Express - Prisma - bcrypt - dotenv",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
@@ -15,7 +15,9 @@
     "cors": "^2.8.5",
     "dotenv": "^17.1.0",
     "express": "^5.1.0",
+    "jest": "^30.0.5",
     "jsonwebtoken": "^9.0.2",
-    "prisma": "^6.11.1"
+    "prisma": "^6.11.1",
+    "supertest": "^7.1.4"
   }
 }
