@@ -26,6 +26,6 @@ jobs:
       - name: Trigger infra deployment
         if: success()
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN  }}
+          GH_TOKEN: ${{ secrets.GITHUB_PAT  }}
         run: |
           gh workflow run deploy.yml --repo Bluelagoon44/Pong-infra -f source=backend
