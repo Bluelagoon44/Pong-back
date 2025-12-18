@@ -20,7 +20,7 @@ jobs:
         run: npm install
 
       - name: Run tests
-        run: echo npm run test > test-logs.txt
+        run: npm run test > test-logs.txt
 
       - name: Upload test
         uses: actions/upload-artifact@v6.0.0
