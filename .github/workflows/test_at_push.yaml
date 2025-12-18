@@ -2,6 +2,8 @@ name: Test at push
 
 on:
   push:
+    branches:
+     - develop
 
 jobs:
   test:
@@ -31,6 +33,8 @@ jobs:
       - name: Show tests
         run: cat test-logs.txt
 
-      - name: Show secret
-        run: echo ${{secrets.YOLO}}
+      - name: Création de la Pull Request
+        run: gh pr create --base main --head ${{ github.ref_name }} --title "Nouvelle fonctionnalité" --body "Cette pull request ajoute une nouvelle fonctionnalité." || true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
