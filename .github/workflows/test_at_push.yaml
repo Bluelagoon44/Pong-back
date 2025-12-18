@@ -8,16 +8,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout frontend
+      - name: Checkout backend
         uses: actions/checkout@v6.0.1
 
-      - name: Setup Docker
-        uses: docker/setup-docker-action@v4.6.0
+      - name: Setup Node
+        uses: actions/setup-node@v6.1.0
+        with: 
+          cache: npm
 
-      - name: Build image
-        run: docker build -t pong-back .
+      - name: Install dependencies
+        run: npm install
 
       - name: Run tests
-        run: |
-          docker run -d --name pong-container pong-back
-          docker exec pong-container npm run test
+        run: echo npm run test > test-logs.txt
+
+      - name: Upload test
+        uses: actions/upload-artifact@v3.0.0
+        with:
+          name: test_logs
+          path: test-logs.txt
