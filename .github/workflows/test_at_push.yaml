@@ -36,5 +36,5 @@ jobs:
       - name: Création de la Pull Request
         run: gh pr create --base main --head ${{ github.ref_name }} --title "Nouvelle fonctionnalité" --body "Cette pull request ajoute une nouvelle fonctionnalité." || true
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_PAT }}
         
