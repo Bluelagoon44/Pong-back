@@ -1,0 +1,23 @@
+name: Test at push
+
+on:
+  push:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout frontend
+        uses: actions/checkout@v6.0.1
+
+      - name: Setup Node
+        uses: actions/setup-node@v6.1.0
+        with: 
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm run test
