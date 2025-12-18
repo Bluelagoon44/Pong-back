@@ -15,7 +15,7 @@ jobs:
         uses: docker/setup-docker-action@v4.6.0
 
       - name: Build image
-        run: docker build pong-back .
+        run: docker build -t pong-back .
 
       - name: Run tests
         run: |
