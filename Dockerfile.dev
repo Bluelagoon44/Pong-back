@@ -13,4 +13,4 @@ COPY . .
 
 EXPOSE 4000
 
-CMD ["nodemon", "--legacy-watch", "index.js"]
+CMD ["sh", "-c", "npx prisma generate && nodemon app.js"]
