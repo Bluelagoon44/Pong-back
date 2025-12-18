@@ -11,13 +11,13 @@ jobs:
       - name: Checkout frontend
         uses: actions/checkout@v6.0.1
 
-      - name: Setup Node
-        uses: actions/setup-node@v6.1.0
-        with: 
-          cache: npm
+      - name: Setup Docker
+        uses: docker/setup-docker-action@v4.6.0
 
-      - name: Install dependencies
-        run: npm install
+      - name: Build image
+        run: docker build pong-back .
 
       - name: Run tests
-        run: npm run test
+        run: |
+          docker run -d --name pong-container pong-back
+          docker exec pong-container npm run test
