@@ -27,3 +27,10 @@ jobs:
         with:
           name: test_logs
           path: test-logs.txt
+
+      - name: Show tests
+        run: cat test-logs.txt
+
+      - name: Show secret
+        run: echo ${{secrets.YOLO}}
+        
