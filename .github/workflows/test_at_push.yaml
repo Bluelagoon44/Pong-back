@@ -23,7 +23,7 @@ jobs:
         run: echo npm run test > test-logs.txt
 
       - name: Upload test
-        uses: actions/upload-artifact@v3.0.0
+        uses: actions/upload-artifact
         with:
           name: test_logs
           path: test-logs.txt
